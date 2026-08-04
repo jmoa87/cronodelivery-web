@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crono | Tu delivery, tu app</title>
+    <meta name="description" content="Creamos aplicaciones personalizadas de pedidos de comida para tu negocio de hostelería. Tus clientes podrán realizar pedidos y pagos desde su móvil, sin comisiones.">
+    <meta name="keywords" content="app pedidos hostelería,aplicación restaurante,pedidos móvil restaurante,app carta digital,software hostelería,crono app">
+    <meta property="og:title" content="Crono | Tu delivery, tu app">
+    <meta property="og:description" content="Creamos aplicaciones personalizadas de pedidos de comida para tu negocio de hostelería.">
+    <meta property="og:image" content="https://cronodelivery.com/icon.png">
+    <meta property="og:url" content="https://cronodelivery.com">
+    <meta name="theme-color" content="#ff4e4e">
+    <link rel="icon" href="https://cronodelivery.com/icon.png">
+    <style>
+        :root { --red: #e94560; --dark: #1a1a2e; --gray: #6b7280; --light: #f9fafb; --white: #ffffff; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color: var(--dark); background: var(--white); }
+        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid #f0f0f0; display: flex; align-items: center; justify-content: space-between; padding: 0 5%; height: 64px; }
+        nav .logo img { height: 28px; }
+        nav ul { display: flex; gap: 32px; list-style: none; }
+        nav ul a { text-decoration: none; color: var(--dark); font-size: 14px; font-weight: 500; }
+        nav ul a:hover { color: var(--red); }
+        nav .btn-nav { background: var(--red); color: white; border: none; padding: 10px 20px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; text-decoration: none; }
+        .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+        .hamburger span { width: 24px; height: 2px; background: var(--dark); display: block; }
+        .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 100px 5% 60px; background: linear-gradient(135deg, #fff 0%, #fff5f5 100%); }
+        .hero h1 { font-size: clamp(36px, 6vw, 64px); font-weight: 800; line-height: 1.1; margin-bottom: 20px; }
+        .hero h1 span { color: var(--red); }
+        .hero p { font-size: 18px; color: var(--gray); margin-bottom: 36px; line-height: 1.6; }
+        .hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+        .btn-primary { background: var(--red); color: white; padding: 14px 28px; border-radius: 10px; font-size: 16px; font-weight: 600; text-decoration: none; }
+        .btn-secondary { background: transparent; color: var(--dark); padding: 14px 28px; border-radius: 10px; font-size: 16px; font-weight: 600; text-decoration: none; border: 2px solid var(--dark); }
+        section { padding: 80px 5%; }
+        .section-label { font-size: 13px; font-weight: 600; color: var(--red); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
+        .section-title { font-size: clamp(28px, 4vw, 44px); font-weight: 800; margin-bottom: 16px; }
+        .section-subtitle { font-size: 18px; color: var(--gray); max-width: 600px; line-height: 1.6; }
+        .features-intro { max-width: 800px; margin-bottom: 60px; }
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 32px; margin-bottom: 48px; }
+        .feature-card { padding: 28px; border-radius: 16px; background: var(--light); }
+        .feature-card h3 { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
+        .feature-card p { color: var(--gray); font-size: 15px; line-height: 1.6; }
+        .feature-icon { font-size: 32px; margin-bottom: 14px; }
+        .highlight-box { background: var(--red); color: white; border-radius: 20px; padding: 40px; display: flex; align-items: center; gap: 40px; flex-wrap: wrap; }
+        .highlight-stat .number { font-size: 56px; font-weight: 800; }
+        .highlight-stat .label { font-size: 14px; opacity: 0.9; }
+        .highlight-text { flex: 1; min-width: 200px; }
+        .highlight-text h3 { font-size: 22px; font-weight: 700; margin-bottom: 8px; }
+        .highlight-text p { opacity: 0.9; font-size: 15px; line-height: 1.6; }
+        .bullets { margin-top: 16px; display: flex; flex-direction: column; gap: 8px; list-style: none; }
+        .bullets li { font-size: 14px; opacity: 0.9; }
+        .bullets li::before { content: "✓ "; font-weight: 700; }
+        #funcionamiento { background: var(--light); }
+        .steps { display: flex; flex-direction: column; gap: 60px; margin-top: 48px; }
+        .step { display: flex; align-items: center; gap: 48px; flex-wrap: wrap; }
+        .step:nth-child(even) { flex-direction: row-reverse; }
+        .step-img { flex: 1; min-width: 240px; max-width: 320px; }
+        .step-img img { width: 100%; border-radius: 20px; box-shadow: 0 20px 60px rgba(0,0,0,0.12); }
+        .step-content { flex: 1; min-width: 260px; }
+        .step-num { font-size: 13px; font-weight: 600; color: var(--red); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; }
+        .step-content h3 { font-size: 26px; font-weight: 700; margin-bottom: 12px; }
+        .step-content p { color: var(--gray); font-size: 16px; line-height: 1.7; }
+        .clients-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; margin-top: 48px; }
+        .client-card { border-radius: 16px; overflow: hidden; border: 1px solid #f0f0f0; transition: transform 0.2s, box-shadow 0.2s; }
+        .client-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.08); }
+        .client-card img { width: 100%; height: 200px; object-fit: cover; }
+        .client-info { padding: 20px; }
+        .client-info h3 { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+        .client-info .location { font-size: 13px; color: var(--gray); margin-bottom: 12px; }
+        .client-info blockquote { font-size: 14px; color: var(--gray); line-height: 1.6; font-style: italic; border-left: 3px solid var(--red); padding-left: 12px; }
+        .coming-soon { background: var(--light); border-radius: 16px; padding: 32px; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; border: 2px dashed #e0e0e0; }
+        #contacto { background: var(--dark); color: white; text-align: center; }
+        #contacto .section-title { color: white; }
+        #contacto .section-subtitle { color: rgba(255,255,255,0.7); margin: 0 auto 48px; }
+        .contact-methods { display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; }
+        .contact-card { background: rgba(255,255,255,0.08); border-radius: 16px; padding: 28px 36px; text-align: center; text-decoration: none; color: white; transition: background 0.2s; }
+        .contact-card:hover { background: rgba(255,255,255,0.15); }
+        .contact-card .icon { font-size: 32px; margin-bottom: 12px; }
+        .contact-card .label { font-size: 12px; color: rgba(255,255,255,0.6); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 1px; }
+        .contact-card .value { font-size: 16px; font-weight: 600; }
+        footer { background: #111; color: rgba(255,255,255,0.6); padding: 48px 5% 32px; }
+        .footer-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+        .footer-brand img { height: 32px; margin-bottom: 16px; filter: brightness(0) invert(1); }
+        .footer-brand p { font-size: 14px; line-height: 1.6; }
+        .footer-col h4 { color: white; font-size: 14px; font-weight: 600; margin-bottom: 16px; }
+        .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+        .footer-col ul a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 14px; }
+        .footer-col ul a:hover { color: white; }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 24px; font-size: 13px; text-align: center; }
+        @media (max-width: 768px) {
+            nav ul { display: none; } nav .btn-nav { display: none; } .hamburger { display: flex; }
+            nav ul.open { display: flex; flex-direction: column; position: fixed; top: 64px; left: 0; right: 0; background: white; padding: 20px 5%; border-bottom: 1px solid #f0f0f0; gap: 16px; }
+            .step { flex-direction: column !important; } .step-img { max-width: 100%; }
+            .footer-grid { grid-template-columns: 1fr; } .highlight-box { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="#" class="logo"><img src="https://cronodelivery.com/logos/text_black.svg" alt="Crono"></a>
+    <ul id="nav-menu">
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#quienes-somos">Quiénes somos</a></li>
+        <li><a href="#funcionamiento">Funcionamiento</a></li>
+        <li><a href="#clientes">Clientes</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+    </ul>
+    <a href="#contacto" class="btn-nav">Contactar</a>
+    <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+</nav>
+
+<section class="hero" id="inicio">
+    <div>
+        <h1>Tu delivery,<br><span>tu app</span></h1>
+        <p>Tu aplicación personalizada para iOS y Android disponible en una semana</p>
+        <div class="hero-btns">
+            <a href="#contacto" class="btn-primary">Solicitar información</a>
+            <a href="#quienes-somos" class="btn-secondary">Saber más</a>
+        </div>
+    </div>
+</section>
+
+<section id="quienes-somos">
+    <div class="features-intro">
+        <div class="section-label">Quiénes somos</div>
+        <h2 class="section-title">Años desarrollando apps para restaurantes</h2>
+        <p class="section-subtitle">En <strong>crono</strong> tenemos algo claro, lo principal es tu negocio. Déjalo en nuestras manos.<br><br>No te costará nada. Sin penalizaciones, sin pasarelas de pago. Recibe el dinero de tu pedido en el momento.</p>
+    </div>
+    <div class="features-grid">
+        <div class="feature-card"><div class="feature-icon">📱</div><h3>App personalizada</h3><p>Cada negocio recibe su propia aplicación con su marca, colores y carta. Una experiencia única para tus clientes.</p></div>
+        <div class="feature-card"><div class="feature-icon">🍽️</div><h3>Gestión de pedidos</h3><p>Tus clientes eligen platos, personalizan sus pedidos y los envían directamente a tu cocina sin intermediarios.</p></div>
+        <div class="feature-card"><div class="feature-icon">💶</div><h3>Pago inmediato</h3><p>Tu dinero es tuyo. Los clientes te pagan a ti, no a nosotros. Una vez finalizado el mes y con tu facturación ya asegurada, es cuando nosotros emitimos nuestro cobro.</p></div>
+        <div class="feature-card"><div class="feature-icon">⚡</div><h3>Rápido y sencillo</h3><p>Nos encargamos de todo el desarrollo. Tú solo te centras en lo que mejor sabes hacer: cocinar.</p></div>
+        <div class="feature-card"><div class="feature-icon">🚫</div><h3>Sin intermediarios, sin comisiones ocultas</h3><p>A diferencia de las grandes plataformas de delivery, con crono el pedido va directamente de tu cliente a tu negocio. No somos una plataforma de reparto: somos tu socio tecnológico.</p></div>
+    </div>
+    <div class="highlight-box">
+        <div class="highlight-stat"><div class="number">100%</div><div class="label">Personalización</div></div>
+        <div class="highlight-text">
+            <h3>Cada app es única, diseñada para tu negocio</h3>
+            <ul class="bullets">
+                <li>App propia con tu marca y logotipo</li>
+                <li>Panel de gestión para controlar los pedidos</li>
+                <li>Soporte técnico continuo</li>
+                <li>Actualizaciones y mejoras incluidas</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section id="funcionamiento">
+    <div class="section-label">Funcionamiento</div>
+    <h2 class="section-title">Cómo trabaja <img src="https://cronodelivery.com/logos/text_black.svg" alt="crono" style="height:28px;vertical-align:middle;"></h2>
+    <p class="section-subtitle">Así es el flujo completo desde que tu cliente abre la app hasta que el pedido llega a tu cocina.</p>
+    <div class="steps">
+        <div class="step"><div class="step-img"><img src="https://cronodelivery.com/functionality/step_1.png" alt="Inicio"></div><div class="step-content"><div class="step-num">Paso 1</div><h3>Inicio</h3><p>Los clientes acceden a la aplicación y descubren al instante la carta completa del restaurante: platos, precios, fotos y las ofertas del día, todo en un vistazo.</p></div></div>
+        <div class="step"><div class="step-img"><img src="https://cronodelivery.com/functionality/step_2.png" alt="Información del producto"></div><div class="step-content"><div class="step-num">Paso 2</div><h3>Información del producto</h3><p>Cada plato muestra su descripción, ingredientes y alérgenos. El cliente elige la cantidad que quiere y puede añadir instrucciones especiales para personalizar su pedido.</p></div></div>
+        <div class="step"><div class="step-img"><img src="https://cronodelivery.com/functionality/step_3.png" alt="Mi carrito"></div><div class="step-content"><div class="step-num">Paso 3</div><h3>Mi carrito</h3><p>Un resumen claro de todo lo añadido: descripción de cada producto, precio unitario y total del pedido. El cliente lo revisa antes de continuar, sin sorpresas.</p></div></div>
+        <div class="step"><div class="step-img"><img src="https://cronodelivery.com/functionality/step_4.png" alt="Confirmar pedido"></div><div class="step-content"><div class="step-num">Paso 4</div><h3>Confirmar pedido</h3><p>El cliente decide si recoge el pedido o lo quiere a domicilio, si lo necesita cuanto antes o para más tarde, y si paga en efectivo o con tarjeta. Todo en un solo paso.</p></div></div>
+        <div class="step"><div class="step-img"><img src="https://cronodelivery.com/functionality/step_5.png" alt="Espera de confirmación"></div><div class="step-content"><div class="step-num">Paso 5</div><h3>Espera de confirmación</h3><p>Una cuenta atrás en tiempo real mientras el restaurante revisa y acepta el pedido. El cliente está informado en todo momento, sin tener que llamar para preguntar.</p></div></div>
+        <div class="step"><div class="step-img"><img src="https://cronodelivery.com/functionality/step_6.png" alt="Confirma el pedido"></div><div class="step-content"><div class="step-num">Paso 6</div><h3>Confirma el pedido</h3><p>Tu restaurante recibe una notificación con la información del pedido y lo confirma. Además puedes incluir el tiempo estimado de preparación y entrega.</p></div></div>
+        <div class="step"><div class="step-img"><img src="https://cronodelivery.com/functionality/step_7.png" alt="Pedido confirmado"></div><div class="step-content"><div class="step-num">Paso 7</div><h3>Pedido confirmado</h3><p>El pedido ha sido aceptado y está en marcha. El cliente recibe la confirmación y sabe exactamente que todo ha salido bien. Así de fácil.</p></div></div>
+    </div>
+</section>
+
+<section id="clientes">
+    <div class="section-label">Nuestros clientes</div>
+    <h2 class="section-title">Ya confían en <img src="https://cronodelivery.com/logos/text_black.svg" alt="crono" style="height:28px;vertical-align:middle;"></h2>
+    <p class="section-subtitle">Cada uno de nuestros clientes tiene su propia aplicación personalizada. Más de 10 negocios ya han transformado su forma de vender con nosotros.</p>
+    <div class="clients-grid">
+        <div class="client-card"><img src="https://cronodelivery.com/clients/AncaLaPili.png" alt="Anca La Pili"><div class="client-info"><h3>Anca La Pili</h3><div class="location">Herrera (Sevilla)</div><blockquote>"Un antes y un después en mi negocio. Me ha ahorrado mucho tiempo y hemos aumentado la facturación notablemente."</blockquote></div></div>
+        <div class="client-card"><img src="https://cronodelivery.com/clients/AsadorCharo.png" alt="Asador Charo"><div class="client-info"><h3>Asador Charo</h3><div class="location">Jaén</div><blockquote>"Por fin tenemos una app viable para fidelizar a nuestros clientes y ver crecer nuestro negocio."</blockquote></div></div>
+        <div class="client-card"><img src="https://cronodelivery.com/clients/ElTaconacho.png" alt="El Taconacho"><div class="client-info"><h3>El Taconacho</h3><div class="location">Fuengirola (Málaga)</div><blockquote>"Buscábamos nuestro propio sello de identidad digital, tal como hacemos con nuestra comida."</blockquote></div></div>
+        <div class="client-card"><img src="https://cronodelivery.com/clients/LaCocinaDePaqui.png" alt="La Cocina de Paqui"><div class="client-info"><h3>La Cocina de Paqui</h3><div class="location">Lucena (Córdoba)</div><blockquote>"Fácil para los clientes y para nosotros. La facturación aumenta, no se puede pedir más."</blockquote></div></div>
+        <div class="client-card"><img src="https://cronodelivery.com/clients/LaMarDeToni.png" alt="La Mar de Toñi"><div class="client-info"><h3>La Mar de Toñi</h3><div class="location">Lucena (Córdoba)</div><blockquote>"Cambiamos el menú en segundos. Un sistema intuitivo que nos ahorra mucho tiempo y trabajo."</blockquote></div></div>
+        <div class="client-card"><img src="https://cronodelivery.com/clients/MisterPollo.png" alt="Mister Pollo"><div class="client-info"><h3>Mister Pollo</h3><div class="location">Jaén</div><blockquote>"Recibimos el dinero directamente. Hemos ganado mucho con esta app respecto a otras plataformas."</blockquote></div></div>
+        <div class="client-card"><img src="https://cronodelivery.com/clients/OKPizza.png" alt="OK! Pizza"><div class="client-info"><h3>OK! Pizza</h3><div class="location">Lucena (Córdoba)</div><blockquote>"Nuestros clientes notan la diferencia de precio y servicio. Lo que es bueno para ellos, es bueno para nosotros."</blockquote></div></div>
+        <div class="client-card"><img src="https://cronodelivery.com/clients/PizzeriaKiki.png" alt="Pizzería KIKI"><div class="client-info"><h3>Pizzería KIKI</h3><div class="location">Priego (Córdoba)</div><blockquote>"Nuestras ofertas integradas han hecho que el negocio crezca. Es justo lo que estábamos buscando."</blockquote></div></div>
+        <div class="client-card"><img src="https://cronodelivery.com/clients/PizzeriaMezquita.png" alt="Pizzeria Mezquita"><div class="client-info"><h3>Pizzeria Mezquita</h3><div class="location">La Rambla (Córdoba)</div><blockquote>"Empezar a trabajar con CRONO es muy fácil, no tienes que hacer nada, ni ninguna inversión, es genial."</blockquote></div></div>
+        <div class="client-card"><img src="https://cronodelivery.com/clients/SpeedII.png" alt="Speed II"><div class="client-info"><h3>Speed II</h3><div class="location">Córdoba</div><blockquote>"La mejor alternativa a las plataformas tradicionales. Ha superado todas nuestras expectativas."</blockquote></div></div>
+        <div class="client-card" style="border:none;background:var(--light);"><div class="client-info" style="padding:32px;"><h3>The Urban Boca y Burger</h3><div class="location">Córdoba</div><blockquote>"Cansado de pagar comisiones y penalizaciones, CRONO nos ha venido genial."</blockquote></div></div>
+        <div class="coming-soon"><div style="font-size:32px;">🚀</div><h3>Próximamente...</h3><p>Más negocios se suman a Crono</p></div>
+    </div>
+</section>
+
+<section id="contacto">
+    <div class="section-label" style="color:rgba(255,255,255,0.6);">Contacto</div>
+    <h2 class="section-title">Hablemos de tu proyecto</h2>
+    <p class="section-subtitle">¿Tienes un negocio de hostelería y quieres que tus clientes puedan hacerte pedidos desde su móvil?<br>Contáctanos y te contamos cómo podemos ayudarte.</p>
+    <div class="contact-methods">
+        <a href="tel:+34957044350" class="contact-card"><div class="icon">📞</div><div class="label">Teléfono / WhatsApp</div><div class="value">+34 957 04 43 50</div></a>
+        <a href="mailto:info@cronodelivery.com" class="contact-card"><div class="icon">✉️</div><div class="label">Email</div><div class="value">info@cronodelivery.com</div></a>
+        <a href="https://instagram.com/cronodeliveryapp" target="_blank" class="contact-card"><div class="icon">📸</div><div class="label">Instagram</div><div class="value">@cronodeliveryapp</div></a>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-grid">
+        <div class="footer-brand"><img src="https://cronodelivery.com/logos/text_black.svg" alt="Crono"><p>Tu aplicación personalizada para iOS y Android disponible en una semana.<br>"Tu delivery, tu app".</p></div>
+        <div class="footer-col"><h4>Navegación</h4><ul><li><a href="#inicio">Inicio</a></li><li><a href="#quienes-somos">Quiénes somos</a></li><li><a href="#clientes">Clientes</a></li><li><a href="#contacto">Contacto</a></li></ul></div>
+        <div class="footer-col"><h4>Legal</h4><ul><li><a href="/aviso-legal">Aviso legal</a></li><li><a href="/privacidad">Privacidad</a></li><li><a href="/cookies">Cookies</a></li><li><a href="/accesibilidad">Accesibilidad</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">© 2026 CRONO. Todos los derechos reservados.</div>
+</footer>
+
+<script>
+function toggleMenu() { document.getElementById('nav-menu').classList.toggle('open'); }
+document.querySelectorAll('#nav-menu a').forEach(a => { a.addEventListener('click', () => document.getElementById('nav-menu').classList.remove('open')); });
+</script>
+</body>
+</html>
