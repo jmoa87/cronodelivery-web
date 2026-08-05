@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crono | Tu delivery, tu app</title>
+    <title>Crono | Tu nuevo delivery, tu dinero para ti</title>
     <meta name="description" content="Creamos aplicaciones personalizadas de pedidos de comida para tu negocio de hostelería. Tus clientes podrán realizar pedidos y pagos desde su móvil, sin comisiones.">
     <meta name="keywords" content="app pedidos hostelería,aplicación restaurante,pedidos móvil restaurante,app carta digital,software hostelería,crono app">
     <meta property="og:title" content="Crono | Tu delivery, tu app">
@@ -13,7 +13,7 @@
     <meta name="theme-color" content="#ff4e4e">
     <link rel="icon" href="https://cronodelivery.com/icon.png">
     <style>
-        :root { --red: #e94560; --dark: #1a1a2e; --gray: #6b7280; --light: #f9fafb; --white: #ffffff; }
+        :root { --red: #e03020; --dark: #1a1a2e; --gray: #6b7280; --light: #f9fafb; --white: #ffffff; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
         body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color: var(--dark); background: var(--white); }
@@ -25,7 +25,9 @@
         nav .btn-nav { background: var(--red); color: white; border: none; padding: 10px 20px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; text-decoration: none; }
         .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
         .hamburger span { width: 24px; height: 2px; background: var(--dark); display: block; }
-        .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 100px 5% 60px; background: linear-gradient(135deg, #fff 0%, #fff5f5 100%); }
+        .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 100px 5% 60px; background: #fff; position: relative; overflow: hidden; }
+        .hero::after { content: ""; position: absolute; bottom: -2px; left: 0; right: 0; height: 45%; background: var(--red); clip-path: ellipse(70% 60% at 50% 100%); z-index: 0; }
+        .hero > div { position: relative; z-index: 1; }
         .hero h1 { font-size: clamp(36px, 6vw, 64px); font-weight: 800; line-height: 1.1; margin-bottom: 20px; }
         .hero h1 span { color: var(--red); }
         .hero p { font-size: 18px; color: var(--gray); margin-bottom: 36px; line-height: 1.6; }
@@ -113,8 +115,9 @@
 
 <section class="hero" id="inicio">
     <div>
-        <h1>Tu delivery,<br><span>tu app</span></h1>
-        <p>Tu aplicación personalizada para iOS y Android disponible en una semana</p>
+        <img src="https://raw.githubusercontent.com/jmoa87/cronodelivery-web/main/icon.png" alt="Crono" style="width:90px;height:90px;margin-bottom:24px;border-radius:20px;">
+        <h1>Tu nuevo delivery,<br><span>tu dinero para ti</span></h1>
+        <p>Sin pasarelas de pago, sin comisiones abusivas, sin penalizaciones, recibe el dinero de tus pedidos directamente... ¿qué te parece?</p>
         <div class="hero-btns">
             <a href="#contacto" class="btn-primary">Solicitar información</a>
             <a href="#quienes-somos" class="btn-secondary">Saber más</a>
@@ -129,7 +132,7 @@
         <p class="section-subtitle">En <strong>crono</strong> tenemos algo claro, lo principal es tu negocio. Déjalo en nuestras manos.<br><br>No te costará nada. Sin penalizaciones, sin pasarelas de pago. Recibe el dinero de tu pedido en el momento.</p>
     </div>
     <div class="features-grid">
-        <div class="feature-card"><div class="feature-icon">📱</div><h3>App personalizada</h3><p>Cada negocio recibe su propia aplicación con su marca, colores y carta. Una experiencia única para tus clientes.</p></div>
+        <div class="feature-card"><div class="feature-icon">📱</div><h3>Entra en Crono</h3><p>Los restaurantes que quieren ganar están en Crono. Puedes personalizar la carta, ingredientes, ajustes... lo que quieras.</p></div>
         <div class="feature-card"><div class="feature-icon">🍽️</div><h3>Gestión de pedidos</h3><p>Tus clientes eligen platos, personalizan sus pedidos y los envían directamente a tu cocina sin intermediarios.</p></div>
         <div class="feature-card"><div class="feature-icon">💶</div><h3>Pago inmediato</h3><p>Tu dinero es tuyo. Los clientes te pagan a ti, no a nosotros. Una vez finalizado el mes y con tu facturación ya asegurada, es cuando nosotros emitimos nuestro cobro.</p></div>
         <div class="feature-card"><div class="feature-icon">⚡</div><h3>Rápido y sencillo</h3><p>Nos encargamos de todo el desarrollo. Tú solo te centras en lo que mejor sabes hacer: cocinar.</p></div>
@@ -138,12 +141,14 @@
     <div class="highlight-box">
         <div class="highlight-stat"><div class="number">100%</div><div class="label">Personalización</div></div>
         <div class="highlight-text">
-            <h3>Cada app es única, diseñada para tu negocio</h3>
+            <h3>Cada restaurante es único, diseña tu negocio</h3>
             <ul class="bullets">
-                <li>App propia con tu marca y logotipo</li>
+                <li>Crono tiene los mejores restaurantes</li>
                 <li>Panel de gestión para controlar los pedidos</li>
                 <li>Soporte técnico continuo</li>
                 <li>Actualizaciones y mejoras incluidas</li>
+                <li>Cambia los platos del menú tú mismo</li>
+                <li>Controla tu stock en tiempo real</li>
             </ul>
         </div>
     </div>
@@ -154,7 +159,7 @@
     <h2 class="section-title">Cómo trabaja <img src="https://cronodelivery.com/logos/text_black.svg" alt="crono" style="height:28px;vertical-align:middle;"></h2>
     <p class="section-subtitle">Así es el flujo completo desde que tu cliente abre la app hasta que el pedido llega a tu cocina.</p>
     <div class="steps">
-        <div class="step"><div class="step-img"><img src="https://cronodelivery.com/functionality/step_1.png" alt="Inicio"></div><div class="step-content"><div class="step-num">Paso 1</div><h3>Inicio</h3><p>Los clientes acceden a la aplicación y descubren al instante la carta completa del restaurante: platos, precios, fotos y las ofertas del día, todo en un vistazo.</p></div></div>
+        <div class="step"><div class="step-img"><img src="https://cronodelivery.com/functionality/step_1.png" alt="Inicio"></div><div class="step-content"><div class="step-num">Paso 1</div><h3>Inicio</h3><p>Los clientes acceden a la aplicación y descubren tu restaurante, al instante la carta completa: platos, precios, fotos y las ofertas del día, todo en un vistazo.</p></div></div>
         <div class="step"><div class="step-img"><img src="https://cronodelivery.com/functionality/step_2.png" alt="Información del producto"></div><div class="step-content"><div class="step-num">Paso 2</div><h3>Información del producto</h3><p>Cada plato muestra su descripción, ingredientes y alérgenos. El cliente elige la cantidad que quiere y puede añadir instrucciones especiales para personalizar su pedido.</p></div></div>
         <div class="step"><div class="step-img"><img src="https://cronodelivery.com/functionality/step_3.png" alt="Mi carrito"></div><div class="step-content"><div class="step-num">Paso 3</div><h3>Mi carrito</h3><p>Un resumen claro de todo lo añadido: descripción de cada producto, precio unitario y total del pedido. El cliente lo revisa antes de continuar, sin sorpresas.</p></div></div>
         <div class="step"><div class="step-img"><img src="https://cronodelivery.com/functionality/step_4.png" alt="Confirmar pedido"></div><div class="step-content"><div class="step-num">Paso 4</div><h3>Confirmar pedido</h3><p>El cliente decide si recoge el pedido o lo quiere a domicilio, si lo necesita cuanto antes o para más tarde, y si paga en efectivo o con tarjeta. Todo en un solo paso.</p></div></div>
@@ -167,7 +172,7 @@
 <section id="clientes">
     <div class="section-label">Nuestros clientes</div>
     <h2 class="section-title">Ya confían en <img src="https://cronodelivery.com/logos/text_black.svg" alt="crono" style="height:28px;vertical-align:middle;"></h2>
-    <p class="section-subtitle">Cada uno de nuestros clientes tiene su propia aplicación personalizada. Más de 10 negocios ya han transformado su forma de vender con nosotros.</p>
+    <p class="section-subtitle">Cada uno de nuestros clientes tiene su propia aplicación personalizada. Muchos negocios ya han transformado su forma de vender con nosotros, ¿y tú? ¿a qué esperas? No te costará nada. No necesitas inversión.</p>
     <div class="clients-grid">
         <div class="client-card"><img src="https://cronodelivery.com/clients/AncaLaPili.png" alt="Anca La Pili"><div class="client-info"><h3>Anca La Pili</h3><div class="location">Herrera (Sevilla)</div><blockquote>"Un antes y un después en mi negocio. Me ha ahorrado mucho tiempo y hemos aumentado la facturación notablemente."</blockquote></div></div>
         <div class="client-card"><img src="https://cronodelivery.com/clients/AsadorCharo.png" alt="Asador Charo"><div class="client-info"><h3>Asador Charo</h3><div class="location">Jaén</div><blockquote>"Por fin tenemos una app viable para fidelizar a nuestros clientes y ver crecer nuestro negocio."</blockquote></div></div>
@@ -197,7 +202,7 @@
 
 <footer>
     <div class="footer-grid">
-        <div class="footer-brand"><img src="https://cronodelivery.com/logos/text_black.svg" alt="Crono"><p>Tu aplicación personalizada para iOS y Android disponible en una semana.<br>"Tu delivery, tu app".</p></div>
+        <div class="footer-brand"><img src="https://cronodelivery.com/logos/text_black.svg" alt="Crono"><p>Entra en Crono.<br>"Tu nuevo delivery, tu dinero para ti".</p></div>
         <div class="footer-col"><h4>Navegación</h4><ul><li><a href="#inicio">Inicio</a></li><li><a href="#quienes-somos">Quiénes somos</a></li><li><a href="#clientes">Clientes</a></li><li><a href="#contacto">Contacto</a></li></ul></div>
         <div class="footer-col"><h4>Legal</h4><ul><li><a href="/aviso-legal">Aviso legal</a></li><li><a href="/privacidad">Privacidad</a></li><li><a href="/cookies">Cookies</a></li><li><a href="/accesibilidad">Accesibilidad</a></li></ul></div>
     </div>
