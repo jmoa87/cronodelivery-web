@@ -34,8 +34,8 @@
         .hero h1 span { color: var(--red); }
         .hero p { font-size: 18px; color: var(--gray); margin-bottom: 36px; line-height: 1.6; }
         .hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
-        .btn-primary { background: var(--red); color: white; padding: 14px 28px; border-radius: 10px; font-size: 16px; font-weight: 600; text-decoration: none; }
-        .btn-secondary { background: transparent; color: var(--dark); padding: 14px 28px; border-radius: 10px; font-size: 16px; font-weight: 600; text-decoration: none; border: 2px solid var(--dark); }
+        .btn-primary { background: var(--red); color: white; padding: 14px 28px; border-radius: 10px; font-size: 16px; font-weight: 600; text-decoration: none; display: inline-block; transition: transform 0.2s, box-shadow 0.2s; } .btn-primary:hover { transform: scale(1.06); box-shadow: 0 8px 24px rgba(224,48,32,0.35); }
+        .btn-secondary { background: transparent; color: var(--dark); padding: 14px 28px; border-radius: 10px; font-size: 16px; font-weight: 600; text-decoration: none; border: 2px solid var(--dark); display: inline-block; transition: transform 0.2s, background 0.2s, color 0.2s; } .btn-secondary:hover { background: var(--dark); color: white; transform: scale(1.06); }
         section { padding: 80px 5%; }
         .section-label { font-size: 13px; font-weight: 600; color: var(--red); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
         .section-title { font-size: clamp(28px, 4vw, 44px); font-weight: 800; margin-bottom: 16px; }
@@ -47,7 +47,7 @@
         .feature-card h3 { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
         .feature-card p { color: var(--gray); font-size: 15px; line-height: 1.6; }
         .feature-icon { font-size: 32px; margin-bottom: 14px; }
-        .highlight-box { background: var(--red); color: white; border-radius: 20px; padding: 40px 48px; display: inline-flex; align-items: center; gap: 40px; flex-wrap: wrap; text-align: center; justify-content: center; max-width: 700px; margin: 0 auto; }
+        .highlight-box { background: var(--red); color: white; border-radius: 20px; padding: 40px 48px; display: inline-flex; align-items: center; gap: 40px; flex-wrap: wrap; text-align: center; justify-content: center; max-width: 700px; margin: 0 auto; transition: transform 0.25s, box-shadow 0.25s; } .highlight-box:hover { transform: scale(1.02); box-shadow: 0 16px 48px rgba(224,48,32,0.3); }
         .highlight-stat .number { font-size: 56px; font-weight: 800; }
         .highlight-stat .label { font-size: 14px; opacity: 0.9; }
         .highlight-text { flex: 1; min-width: 200px; }
@@ -131,7 +131,7 @@
 </section>
 
 <section id="quienes-somos">
-    <div class="features-intro">
+    <div class="features-intro" style="text-align:center; margin: 0 auto 60px;">
         <div class="section-label">Quiénes somos</div>
         <h2 class="section-title">Años desarrollando apps para restaurantes</h2>
         <p class="section-subtitle">En <strong>crono</strong> tenemos algo claro, lo principal es tu negocio. Déjalo en nuestras manos.<br><br>No te costará nada. Sin penalizaciones, sin pasarelas de pago. Recibe el dinero de tu pedido en el momento.</p>
