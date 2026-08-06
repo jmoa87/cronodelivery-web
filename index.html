@@ -19,13 +19,13 @@
         html { scroll-behavior: smooth; }
         body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color: var(--dark); background: var(--white); }
         nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid #f0f0f0; display: flex; align-items: center; justify-content: space-between; padding: 0 5%; height: 64px; }
-        nav .logo img { height: 36px; object-fit: contain; }
+        nav .logo img { height: 36px; object-fit: contain; transition: transform 0.2s; } nav .logo img:hover { transform: scale(1.08) rotate(-3deg); }
         .hero-icon { width: 90px; height: 90px; margin-bottom: 24px; border-radius: 20px; transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer; }
         .hero-icon:hover { transform: scale(1.12) rotate(-6deg); box-shadow: 0 12px 40px rgba(224,48,32,0.4); }
         nav ul { display: flex; gap: 32px; list-style: none; }
         nav ul a { text-decoration: none; color: var(--dark); font-size: 14px; font-weight: 500; }
         nav ul a:hover { color: var(--red); }
-        nav .btn-nav { background: var(--red); color: white; border: none; padding: 10px 20px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; text-decoration: none; }
+        nav .btn-nav { background: var(--red); color: white; border: none; padding: 10px 20px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; display: inline-block; } .btn-nav:hover { transform: scale(1.08); box-shadow: 0 6px 20px rgba(224,48,32,0.4); }
         .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
         .hamburger span { width: 24px; height: 2px; background: var(--dark); display: block; }
         .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 100px 5% 60px; background: #fff; position: relative; overflow: hidden; }
@@ -102,7 +102,12 @@
             .step { flex-direction: column !important; } .step-img { max-width: 100%; }
             .footer-grid { grid-template-columns: 1fr; } .highlight-box { flex-direction: column; text-align: center; }
         }
-    </style>
+    
+        .iphone-frame { position: relative; display: inline-block; border-radius: 36px; border: 8px solid #111; box-shadow: 0 24px 60px rgba(0,0,0,0.25), inset 0 0 0 2px #333; overflow: hidden; width: 100%; max-width: 280px; background: #111; }
+        .iphone-frame::before { content: ""; position: absolute; top: 8px; left: 50%; transform: translateX(-50%); width: 60px; height: 6px; background: #222; border-radius: 4px; z-index: 10; }
+        .iphone-frame .img-a, .iphone-frame .img-b { width: 100%; display: block; border-radius: 28px; }
+        .iphone-frame .img-b { position: absolute; top: 0; left: 0; opacity: 0; transition: opacity 0.4s ease; border-radius: 28px; }
+</style>
 </head>
 <body>
 
@@ -164,10 +169,18 @@
 
 <section id="funcionamiento">
     <div class="section-label">Funcionamiento</div>
-    <h2 class="section-title">Cómo trabaja <img src="https://cronodelivery.com/logos/text_black.svg" alt="crono" style="height:28px;vertical-align:middle;"></h2>
+    <h2 class="section-title">Crono te lo pone fácil <img src="icon.png" alt="Crono" class="hero-icon" style="width:40px;height:40px;margin-bottom:0;vertical-align:middle;border-radius:10px;"></h2>
     <p class="section-subtitle">Así es el flujo completo desde que tu cliente abre la app hasta que el pedido llega a tu cocina.</p>
     <div class="steps">
-        <div class="step"><div class="step-img"><img src="https://cronodelivery.com/functionality/step_1.png" alt="Inicio"></div><div class="step-content"><div class="step-num">Paso 1</div><h3>Inicio</h3><p>Los clientes acceden a la aplicación y descubren tu restaurante, al instante la carta completa: platos, precios, fotos y las ofertas del día, todo en un vistazo.</p></div></div>
+        <div class="step">
+        <div class="step-img">
+            <div class="iphone-frame" onmouseenter="this.querySelector('.img-b').style.opacity='1'" onmouseleave="this.querySelector('.img-b').style.opacity='0'">
+                <img class="img-a" src="paso1a.png" alt="Inicio">
+                <img class="img-b" src="paso1b.png" alt="Inicio 2">
+            </div>
+        </div>
+        <div class="step-content"><div class="step-num">Paso 1</div><h3>Inicio</h3><p>Los clientes acceden a la aplicación y descubren tu restaurante, al instante la carta completa: platos, precios, fotos y las ofertas del día, todo en un vistazo.</p></div>
+    </div>
         <div class="step"><div class="step-img"><img src="https://cronodelivery.com/functionality/step_2.png" alt="Información del producto"></div><div class="step-content"><div class="step-num">Paso 2</div><h3>Información del producto</h3><p>Cada plato muestra su descripción, ingredientes y alérgenos. El cliente elige la cantidad que quiere y puede añadir instrucciones especiales para personalizar su pedido.</p></div></div>
         <div class="step"><div class="step-img"><img src="https://cronodelivery.com/functionality/step_3.png" alt="Mi carrito"></div><div class="step-content"><div class="step-num">Paso 3</div><h3>Mi carrito</h3><p>Un resumen claro de todo lo añadido: descripción de cada producto, precio unitario y total del pedido. El cliente lo revisa antes de continuar, sin sorpresas.</p></div></div>
         <div class="step"><div class="step-img"><img src="https://cronodelivery.com/functionality/step_4.png" alt="Confirmar pedido"></div><div class="step-content"><div class="step-num">Paso 4</div><h3>Confirmar pedido</h3><p>El cliente decide si recoge el pedido o lo quiere a domicilio, si lo necesita cuanto antes o para más tarde, y si paga en efectivo o con tarjeta. Todo en un solo paso.</p></div></div>
