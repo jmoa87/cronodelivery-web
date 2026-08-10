@@ -252,6 +252,76 @@
 function toggleMenu() { document.getElementById('nav-menu').classList.toggle('open'); }
 document.querySelectorAll('#nav-menu a').forEach(a => { a.addEventListener('click', () => document.getElementById('nav-menu').classList.remove('open')); });
 </script>
+
+<!-- Banner Cookies -->
+<div id="cookie-banner" style="
+    position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(120px);
+    background: #1a1a2e; color: white; border-radius: 16px; padding: 20px 28px;
+    display: flex; align-items: center; gap: 20px; flex-wrap: wrap; justify-content: center;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.3); z-index: 9999; max-width: 800px; width: 90%;
+    transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.5s ease;
+    opacity: 0;">
+    <div style="flex:1; min-width:200px;">
+        <p style="font-size:14px; line-height:1.6; color:rgba(255,255,255,0.85);">
+            🍪 Usamos cookies para mejorar tu experiencia. Puedes aceptarlas o rechazarlas.
+            <a href="cookies.html" style="color:#e03020; text-decoration:none; font-weight:600;"> Más info</a>
+        </p>
+    </div>
+    <div style="display:flex; gap:10px; flex-shrink:0;">
+        <button onclick="rejectCookies()" style="
+            padding: 10px 20px; border-radius: 8px; border: 1.5px solid rgba(255,255,255,0.3);
+            background: transparent; color: white; font-size: 14px; font-weight: 600;
+            cursor: pointer; transition: background 0.2s;">
+            Rechazar
+        </button>
+        <button onclick="acceptCookies()" style="
+            padding: 10px 20px; border-radius: 8px; border: none;
+            background: #e03020; color: white; font-size: 14px; font-weight: 600;
+            cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;">
+            Aceptar
+        </button>
+    </div>
+</div>
+
+<script>
+function hideCookieBanner() {
+    var b = document.getElementById('cookie-banner');
+    b.style.transform = 'translateX(-50%) translateY(120px)';
+    b.style.opacity = '0';
+    setTimeout(function() { b.style.display = 'none'; }, 500);
+}
+function acceptCookies() {
+    localStorage.setItem('cookies', 'accepted');
+    hideCookieBanner();
+}
+function rejectCookies() {
+    localStorage.setItem('cookies', 'rejected');
+    hideCookieBanner();
+}
+window.addEventListener('load', function() {
+    if (!localStorage.getItem('cookies')) {
+        var b = document.getElementById('cookie-banner');
+        setTimeout(function() {
+            b.style.transform = 'translateX(-50%) translateY(0)';
+            b.style.opacity = '1';
+        }, 1500);
+    }
+});
+document.querySelector('button[onclick="rejectCookies()"]').addEventListener('mouseover', function() {
+    this.style.background = 'rgba(255,255,255,0.1)';
+});
+document.querySelector('button[onclick="rejectCookies()"]').addEventListener('mouseout', function() {
+    this.style.background = 'transparent';
+});
+document.querySelector('button[onclick="acceptCookies()"]').addEventListener('mouseover', function() {
+    this.style.transform = 'scale(1.05)';
+    this.style.boxShadow = '0 4px 16px rgba(224,48,32,0.4)';
+});
+document.querySelector('button[onclick="acceptCookies()"]').addEventListener('mouseout', function() {
+    this.style.transform = 'scale(1)';
+    this.style.boxShadow = 'none';
+});
+</script>
 </body>
 </html>
  
