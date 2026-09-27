@@ -137,9 +137,9 @@
         <p>Sin pasarelas de pago, sin comisiones abusivas, sin penalizaciones, recibe el dinero de tus pedidos directamente... ¿qué te parece?</p>
         <div class="hero-btns">
             <a href="#contacto" class="btn-primary">Solicitar información</a>
-            <a href="#descargar" class="btn-secondary">Descargar</a>
+            <a href="#" class="btn-secondary" onclick="descargarApp(); return false;">Descargar</a>
         </div>
-        <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap; margin-top:24px;">
+        <div id="store-badges" style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap; margin-top:24px;">
             <a href="#" style="display:inline-block; transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'">
                 <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="App Store" height="44">
             </a>
@@ -329,6 +329,20 @@ document.querySelector('button[onclick="acceptCookies()"]').addEventListener('mo
     this.style.transform = 'scale(1)';
     this.style.boxShadow = 'none';
 });
+</script>
+
+<script>
+function descargarApp() {
+    var ua = navigator.userAgent || navigator.vendor || window.opera;
+    if (/android/i.test(ua)) {
+        window.location.href = 'https://play.google.com/store/apps/details?id=com.titanestudios.cronodelivery';
+    } else if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
+        window.location.href = 'https://apps.apple.com/es/app/crono-delivery/id6814410033';
+    } else {
+        // Desktop: mostrar ambas opciones
+        document.getElementById('store-badges').scrollIntoView({behavior: 'smooth'});
+    }
+}
 </script>
 </body>
 </html>
